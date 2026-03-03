@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SaaS.Application.Commands.Subscriptions;
 using SaaS.Application.DTOs;
 using SaaS.Application.DTOs.Subscriptions;
 using SaaS.Application.Queries.Subscriptions;
@@ -40,8 +41,9 @@ public class SubscriptionsController : ControllerBase
     [ProducesResponseType(typeof(ApiResponse<TenantSubscriptionDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetCurrentSubscription()
     {
-        // Implementation would use query
-        return Ok();
+        var query = new GetCurrentSubscriptionQuery();
+        var result = await _mediator.Send(query);
+        return Ok(result);
     }
 
     /// <summary>
@@ -52,7 +54,8 @@ public class SubscriptionsController : ControllerBase
     [ProducesResponseType(typeof(ApiResponse<TenantSubscriptionDto>), StatusCodes.Status200OK)]
     public async Task<IActionResult> CreateSubscription([FromBody] CreateSubscriptionRequest request)
     {
-        // Implementation would use command
-        return Ok();
+        var command = new CreateSubscriptionCommand(request.PlanId, request.AutoRenew);
+        var result = await _mediator.Send(command);
+        return Ok(result);
     }
 }
