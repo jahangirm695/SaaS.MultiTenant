@@ -372,7 +372,7 @@ docker-compose down
 #### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/saas-multitenant.git
+git clone https://github.com/jahangirm695/SaaS.MultiTenant.git
 cd saas-multitenant
 ```
 
@@ -1326,3 +1326,4 @@ It helps others discover this resource and motivates me to create more education
 **[⬆ Back to Top](#multi-tenant-saas-subscription-management-system)**
 
 </div>
+
